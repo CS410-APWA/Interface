@@ -1,26 +1,28 @@
+<!DOCTYPE HTML>
 <html>
     <head>
         <title>WEBPAGE</title>
         <link rel = "stylesheet" type = "text/css" href = "style.css">
     </head>
     <body>
-         <div class="dropdown">
-         <button onclick="myFunction()" class="dropbtn">Dropdown</button>
-            <select id="myDropdown" class="dropdown-content">
-                <option value=1>Autobiographical, Paths to Prison</option>
-                <option value=2>Education, Re-entry, Other Programs</option>
-                <option value=3>Family</option>
-                <option value=3>Health Care</option>
-                <option value=4>Judicial Misconduct and Legal Remediation</option>
-                <option value=5>Personal/Intern Change/Coping</option>
-                <option value=6>Physical Conditions and Security</option>
-                <option value=7>Political and Intellectual Labor among IP</option>
-                <option value=8>Prison Culture/Community/Society</option>
-                <option value=9>Prison Industry/Prison as Business</option>
-                <option value=10>Social Alienation, Indifference, Hostility</option>
-                <option value=11>Staff/prison Abuse of IP</option>
-            </select>
-        </div>
-        <script src="dropdown.js"></script>
+        <form>
+        Select a topic from the dropdown:
+          <select id="myDropdown" name="dropdown-content">
+              <option value=0>-- Select Topic --</option>
+              <option value=1>Autobiographical, Paths to Prison</option>
+              <option value=2>Education, Re-entry, Other Programs</option>
+              <option value=3>Family</option>
+              <option value=3>Health Care</option>
+              <option value=4>Judicial Misconduct and Legal Remediation</option>
+              <option value=5>Personal/Intern Change/Coping</option>
+              <option value=6>Physical Conditions and Security</option>
+              <option value=7>Political and Intellectual Labor among IP</option>
+              <option value=8>Prison Culture/Community/Society</option>
+              <option value=9>Prison Industry/Prison as Business</option>
+              <option value=10>Social Alienation, Indifference, Hostility</option>
+              <option value=11>Staff/prison Abuse of IP</option>
+          </select>
+          <br><br>
+        </form>
     </body>
 </html>
