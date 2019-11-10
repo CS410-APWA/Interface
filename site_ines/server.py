@@ -53,6 +53,21 @@ def select_essays_with_topic(conn, topic):
     #print(list(rows[0]))
     return d
 
+def makeHtml(query_results):
+    #returns a list of hyperlinks in html format
+
+    html = """
+<html>
+<body>
+    <ul>
+        """
+
+    for link in query_results.values():
+        html += '<li><a href="' + link + '">' + link + '</a></li>'
+
+    html += '</ul></body></html>'
+    return html
+
 @app.route('/')
 def index():
   return render_template('index.html')
@@ -68,7 +83,7 @@ def get_topic():
     with conn:
       #print("Query essays of topic {}." % topic)
       query_results = select_essays_with_topic(conn, topic)
-      return query_results
+      return makeHtml(query_results)
 
 
 if __name__ == '__main__':
