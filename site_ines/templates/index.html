@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>WEBPAGE</title>
+        <script src="dropdown.js"></script>
+    </head>
+    <body>
+        <form class="get-topic" method="POST" action="{{ url_for('get_topic') }}">
+        Select a topic from the dropdown:
+          <select id="myDropdown" name = "myDropdown">
+              <option value=0>-- Select Topic --</option>
+              <option value=1>Autobiographical, Paths to Prison</option>
+              <option value=2>Education, Re-entry, Other Programs</option>
+              <option value=3>Family</option>
+              <option value=4>Health Care</option>
+              <option value=5>Judicial Misconduct and Legal Remediation</option>
+              <option value=6>Personal/Intern Change/Coping</option>
+              <option value=7>Physical Conditions and Security</option>
+              <option value=8>Political and Intellectual Labor among IP</option>
+              <option value=9>Prison Culture/Community/Society</option>
+              <option value=10>Prison Industry/Prison as Business</option>
+              <option value=11>Social Alienation, Indifference, Hostility</option>
+              <option value=12>Staff/prison Abuse of IP</option>
+          </select>
+          <button type="submit" name="send" value="send">Send</button>
+          <br><br>
+        </form>
+    </body>
+</html>
