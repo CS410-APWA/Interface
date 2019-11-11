@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request, url_for
 import sqlite3
 from sqlite3 import Error
+from bs4 import BeautifulSoup
+import requests
 
 app = Flask(__name__)
 
@@ -39,7 +41,7 @@ def select_essays_with_topic(conn, topic):
     :return:
     """
     cur = conn.cursor()
-    cur.execute('SELECT filename FROM essays WHERE "{}" > 0 ORDER BY "{}" DESC'.format(topic, topic))
+    cur.execute('SELECT filename, title FROM essays WHERE "{}" > 0 ORDER BY "{}" DESC'.format(topic, topic))
 
     d = {}
     count = 0
@@ -47,7 +49,7 @@ def select_essays_with_topic(conn, topic):
 
     print("Total: ", len(rows))
     for row in rows:
-        d[count] = "https://apw.dhinitiative.org/islandora/object/apw%3A" + list(row)[0][4:list(row)[0].find('.')] + "?solr_nav%5Bid%5D=de9208daa3f92a256e25&solr_nav%5Bpage%5D=0&solr_nav%5Boffset%5D=0"
+        d[count] = ("https://apw.dhinitiative.org/islandora/object/apw%3A" + list(row)[0][4:list(row)[0].find('.')] + "?", list(row)[1])
         count += 1
     #   print(row)
     #print(list(rows[0]))
@@ -59,11 +61,11 @@ def makeHtml(query_results):
     html = """
 <html>
 <body>
-    <ul>
+    <ul style="list-style-type:none;">
         """
 
     for link in query_results.values():
-        html += '<li><a href="' + link + '">' + link + '</a></li>'
+        html += '<li><a href="' + link[0] + '" target="_blank">' + link[1] + '</a></li>'
 
     html += '</ul></body></html>'
     return html
