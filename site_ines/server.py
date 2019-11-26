@@ -41,7 +41,7 @@ def select_essays_with_topic(conn, topic):
     :return:
     """
     cur = conn.cursor()
-    cur.execute('SELECT filename, title FROM essays WHERE "{}" > 0 ORDER BY "{}" DESC'.format(topic, topic))
+    cur.execute('SELECT link, title FROM essays WHERE "{}" > 0 ORDER BY "{}" DESC'.format(topic, topic))
 
     d = {}
     count = 0
@@ -49,7 +49,7 @@ def select_essays_with_topic(conn, topic):
 
     print("Total: ", len(rows))
     for row in rows:
-        d[count] = ("https://apw.dhinitiative.org/islandora/object/apw%3A" + list(row)[0][4:list(row)[0].find('.')] + "?", list(row)[1])
+        d[count] = (list(row)[0], list(row)[1])
         count += 1
     #   print(row)
     #print(list(rows[0]))
